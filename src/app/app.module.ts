@@ -15,6 +15,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { RepositoriesComponent } from './components/repositories/repositories.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,7 @@ import { OverviewComponent } from './components/overview/overview.component';
     NavbarComponent,
     TabsComponent,
     OverviewComponent,
+    RepositoriesComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,9 @@ import { OverviewComponent } from './components/overview/overview.component';
     MatInputModule,
     HttpClientModule,
     MatTabsModule,
+    MatTableModule,
+    MatButtonModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

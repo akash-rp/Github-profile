@@ -26,3 +26,7 @@ mat-tab-group {
   display: flex;
   gap: 20px;
 }
+
+app-repositories {
+  flex-grow: 1;
+}

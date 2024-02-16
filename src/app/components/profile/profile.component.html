@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="profile-overview">
+    <div class="avatar">
+      <img src="{{ profile.avatar_url }}" alt="avatar" />
+    </div>
+    <div class="info">
+      <h1>{{ profile.name }}</h1>
+      <p class="username">{{ profile.login }}</p>
+      <p class="bio">{{ profile.bio }}</p>
+      <p class="followers-grp">
+        <mat-icon>group</mat-icon>
+        <span class="bold">{{ profile.followers }}</span>
+        <span class="gray">followers</span>
+        .
+        <span class="bold"> {{ profile.following }}</span>
+        <span class="gray">following</span>
+      </p>
+      <p class="additional">
+        <mat-icon>apartment</mat-icon>
+        <span>{{ profile.company }}</span>
+      </p>
+      <p class="additional">
+        <mat-icon>location_on</mat-icon>
+        <span>{{ profile.location }}</span>
+      </p>
+      <p class="additional">
+        <mat-icon>link</mat-icon>
+        <span>{{ profile.blog }}</span>
+      </p>
+      <p class="additional">
+        <mat-icon>public</mat-icon>
+        <span>&#64;{{ profile.twitter_username }}</span>
+      </p>
+    </div>
+  </div>
+</div>

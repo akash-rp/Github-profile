@@ -1,0 +1,28 @@
+.container {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  gap: 100px;
+}
+
+mat-tab-group {
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+}
+
+::ng-deep .mat-mdc-tab-header {
+  width: 30%;
+  margin: auto;
+}
+
+::ng-deep .mat-mdc-tab-body-content,
+::ng-deep .mat-mdc-tab-body-wrapper,
+::ng-deep .mat-mdc-tab-body {
+  overflow: visible !important;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+}

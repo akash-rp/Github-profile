@@ -1,0 +1,27 @@
+<div class="container">
+  <mat-tab-group animationDuration="0ms">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon fontSet="material-icons-outlined">auto_stories</mat-icon>
+        Overview
+      </ng-template>
+      <div class="content">
+        <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+        <app-overview></app-overview>
+      </div>
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon fontSet="material-icons-outlined">book</mat-icon>
+        Repositories
+      </ng-template>
+      <div class="content">
+        <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+<ng-template #tabContent>
+  <app-profile></app-profile>
+</ng-template>

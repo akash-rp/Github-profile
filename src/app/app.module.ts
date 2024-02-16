@@ -12,9 +12,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { OverviewComponent } from './components/overview/overview.component';
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, NavbarComponent],
+  declarations: [
+    AppComponent,
+    ProfileComponent,
+    NavbarComponent,
+    TabsComponent,
+    OverviewComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,6 +33,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatToolbarModule,
     MatInputModule,
     HttpClientModule,
+    MatTabsModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

@@ -1,16 +1,11 @@
 /* profile.component.css */
-.container {
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  gap: 100px;
-}
-
 .profile-overview {
   display: flex;
   //   align-items: center;
-  margin-top: 20px;
+  margin-top: -20px;
   flex-direction: column;
+  position: relative;
+  z-index: 999;
 }
 
 .avatar {
@@ -24,14 +19,6 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-}
-
-.icons {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .info {
@@ -75,50 +62,6 @@
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 3px;
-}
-
-.repository-section {
-  margin-top: 40px;
-  flex: 1 0;
-}
-
-.repository-section h2 {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.repository {
-  margin-top: 20px;
-}
-
-.repository mat-card-header {
-  display: flex;
-  align-items: center;
-}
-
-.repository mat-card-title {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.repository mat-card-content {
-  font-size: 18px;
-  color: gray;
-}
-
-.repository mat-chip {
-  background-color: lightgray;
-  border-radius: 5px;
-  padding: 5px 10px;
-}
-
-.repository mat-card-actions {
-  display: flex;
-  align-items: center;
-}
-
-.repository mat-card-actions span {
-  margin-left: 5px;
 }
 
 .spacer {

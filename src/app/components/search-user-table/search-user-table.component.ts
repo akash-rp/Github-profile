@@ -3,18 +3,13 @@ import {
   Component,
   Input,
   OnChanges,
-  OnInit,
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-
-import { MatSelectChange } from '@angular/material/select';
-import { MatSort, Sort } from '@angular/material/sort';
-
-import { merge, Observable, of as observableOf, pipe } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { switchMap, catchError, map, startWith } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 import { Users, UsersTable } from '../../models/User';
 import { SearchService } from '../../services/user-service';
 import { Router } from '@angular/router';
@@ -22,82 +17,63 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-search-user-table',
   templateUrl: 'search-user-table.component.html',
-  styleUrl: 'search-user-table.component.scss',
+  styleUrls: ['search-user-table.component.scss'],
 })
-export class SearchUserTableComponent implements OnChanges {
+export class SearchUserTableComponent implements AfterViewInit, OnChanges {
   @Input() query!: string;
+
   displayedColumns: string[] = ['avatar_url', 'login'];
-
-  usersTable!: UsersTable;
-
+  dataSource = new MatTableDataSource<Users>();
+  isLoading = false;
+  isError = false;
   totalData!: number;
   usersData!: Users[];
+  pageSizes = [10];
 
-  dataSource = new MatTableDataSource<Users>();
-
-  isLoading = false;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private searchService: SearchService, private router: Router) {}
 
-  @ViewChild('paginator') paginator!: MatPaginator;
-
-  pageSizes = [10];
-
-  getTableData$(pageNumber: number) {
-    return this.searchService.searchUsers(this.query, pageNumber);
-  }
-
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-
-    this.paginator.page
-      .pipe(
-        startWith({}),
-        switchMap(() => {
-          this.isLoading = true;
-          return this.getTableData$(this.paginator.pageIndex + 1).pipe(
-            catchError(() => observableOf(null))
-          );
-        }),
-        map((usersData) => {
-          if (usersData == null) return [];
-          this.totalData = usersData.total_count;
-          this.isLoading = false;
-          return usersData.items;
-        })
-      )
-      .subscribe((usersData) => {
-        this.usersData = usersData;
-        this.dataSource = new MatTableDataSource(this.usersData);
-      });
+    this.setupPagination();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (!changes['query'].firstChange) {
-      this.dataSource.paginator = this.paginator;
-
-      this.paginator.page
-        .pipe(
-          startWith({}),
-          switchMap(() => {
-            this.isLoading = true;
-            return this.getTableData$(this.paginator.pageIndex + 1).pipe(
-              catchError(() => observableOf(null))
-            );
-          }),
-          map((usersData) => {
-            if (usersData == null) return [];
-            this.totalData = usersData.total_count;
-            this.isLoading = false;
-            return usersData.items;
-          })
-        )
-        .subscribe((usersData) => {
-          this.usersData = usersData;
-          this.dataSource = new MatTableDataSource(this.usersData);
-        });
+      this.setupPagination();
     }
   }
+
+  setupPagination() {
+    this.dataSource.paginator = this.paginator;
+    this.isLoading = true;
+    this.isError = false;
+    this.paginator.page
+      .pipe(
+        startWith({}),
+        switchMap(() => this.getTableData(this.paginator.pageIndex + 1)),
+        catchError((error) => {
+          console.error('Error fetching data:', error);
+          this.isLoading = false;
+          this.isError = true;
+          return of(null);
+        })
+      )
+      .subscribe((usersData) => {
+        if (usersData === null) {
+          return;
+        }
+        this.totalData = usersData.total_count;
+        this.isLoading = false;
+        this.usersData = usersData.items;
+        this.dataSource.data = this.usersData;
+      });
+  }
+
+  getTableData(pageNumber: number): Observable<UsersTable> {
+    return this.searchService.searchUsers(this.query, pageNumber);
+  }
+
   getUserProfile(user: Users) {
     this.router.navigateByUrl('/' + user.login);
   }

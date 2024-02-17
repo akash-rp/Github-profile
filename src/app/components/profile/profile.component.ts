@@ -8,10 +8,8 @@ import { ProfileService } from '../../services/profile-service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   @Input() profile!: Profile;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }

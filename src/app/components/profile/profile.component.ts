@@ -1,5 +1,5 @@
 // profile.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Profile } from '../../models/profile';
 import { ProfileService } from '../../services/profile-service';
 
@@ -9,15 +9,9 @@ import { ProfileService } from '../../services/profile-service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  profile!: Profile;
+  @Input() profile!: Profile;
 
-  constructor(private profileService: ProfileService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.profileService.getUserDetails('ThusharaX').subscribe({
-      next: (resp) => {
-        this.profile = resp;
-      },
-    });
-  }
+  ngOnInit(): void {}
 }

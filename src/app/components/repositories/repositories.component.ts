@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Repo } from '../../models/Repo';
 import { ProfileService } from '../../services/profile-service';
 
@@ -8,13 +8,15 @@ import { ProfileService } from '../../services/profile-service';
   styleUrl: 'repositories.component.scss',
 })
 export class RepositoriesComponent implements OnInit {
+  @Input() user!: string;
+
   repositories: Repo[] = [];
   displayedColumns: string[] = ['id'];
   parsedLinks: { [key: string]: string } = {};
   constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
-    this.profileService.getReposList('ThusharaX').subscribe({
+    this.profileService.getReposList(this.user).subscribe({
       next: (repos) => {
         const linkHeader = repos.headers.get('link');
         const links = linkHeader?.split(',').map((link) => link.trim());

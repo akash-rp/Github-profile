@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Profile } from './../../models/profile';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProfileService } from '../../services/profile-service';
 
 @Component({
   selector: 'app-tabs',
@@ -6,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['tabs.component.scss'],
 })
 export class TabsComponent implements OnInit {
-  constructor() {}
+  @Input() user!: string;
+  profile!: Profile;
+  constructor(private profileService: ProfileService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.profileService.getUserDetails(this.user).subscribe({
+      next: (resp) => {
+        this.profile = resp;
+      },
+    });
+  }
 }

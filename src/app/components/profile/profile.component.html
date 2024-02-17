@@ -7,26 +7,26 @@
     <p class="username">{{ profile.login }}</p>
     <p class="bio">{{ profile.bio }}</p>
     <p class="followers-grp">
-      <mat-icon>group</mat-icon>
+      <mat-icon fontSet="material-icons-outlined">group</mat-icon>
       <span class="bold">{{ profile.followers }}</span>
       <span class="gray">followers</span>
       .
       <span class="bold"> {{ profile.following }}</span>
       <span class="gray">following</span>
     </p>
-    <p class="additional">
+    <p class="additional" *ngIf="profile.company">
       <mat-icon fontSet="material-icons-outlined">apartment</mat-icon>
       <span>{{ profile.company }}</span>
     </p>
-    <p class="additional">
+    <p class="additional" *ngIf="profile.location">
       <mat-icon fontSet="material-icons-outlined">location_on</mat-icon>
       <span>{{ profile.location }}</span>
     </p>
-    <p class="additional">
+    <p class="additional" *ngIf="profile.blog">
       <mat-icon fontSet="material-icons-outlined">link</mat-icon>
       <span>{{ profile.blog }}</span>
     </p>
-    <p class="additional">
+    <p class="additional" *ngIf="profile.twitter_username">
       <mat-icon fontSet="material-icons-outlined">public</mat-icon>
       <span>&#64;{{ profile.twitter_username }}</span>
     </p>

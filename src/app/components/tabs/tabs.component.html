@@ -1,5 +1,5 @@
 <div class="container">
-  <mat-tab-group animationDuration="0ms">
+  <mat-tab-group animationDuration="0ms" *ngIf="profile">
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon fontSet="material-icons-outlined">auto_stories</mat-icon>
@@ -7,22 +7,26 @@
       </ng-template>
       <div class="content">
         <ng-container *ngTemplateOutlet="tabContent"></ng-container>
-        <app-overview></app-overview>
+        <app-overview [user]="user"></app-overview>
       </div>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
         <mat-icon fontSet="material-icons-outlined">book</mat-icon>
-        Repositories
+        Repositories &nbsp;
+        <mat-chip *ngIf="profile.public_repos">{{
+          profile.public_repos
+        }}</mat-chip>
       </ng-template>
       <div class="content">
         <ng-container *ngTemplateOutlet="tabContent"></ng-container>
-        <app-repositories></app-repositories>
+        <app-repositories [user]="user"></app-repositories>
       </div>
     </mat-tab>
   </mat-tab-group>
+  <h2 *ngIf="!profile?.id">User not found. Please check the username.</h2>
 </div>
 
 <ng-template #tabContent>
-  <app-profile></app-profile>
+  <app-profile [profile]="profile"></app-profile>
 </ng-template>

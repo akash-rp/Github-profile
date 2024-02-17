@@ -12,7 +12,7 @@ mat-tab-group {
 }
 
 ::ng-deep .mat-mdc-tab-header {
-  width: 30%;
+  width: 40%;
   margin: auto;
 }
 
@@ -27,6 +27,11 @@ mat-tab-group {
   gap: 20px;
 }
 
-app-repositories {
+app-repositories,
+app-overview {
   flex-grow: 1;
+}
+
+.mat-mdc-standard-chip {
+  --mdc-chip-label-text-size: 12px;
 }

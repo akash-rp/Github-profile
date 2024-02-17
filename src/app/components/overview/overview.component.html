@@ -19,4 +19,7 @@
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
+  <div *ngIf="repositories.length === 0" class="no-repo">
+    {{ this.user }} doesn't have any public repositories yet.
+  </div>
 </div>

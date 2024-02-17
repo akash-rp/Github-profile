@@ -21,6 +21,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MarkdownModule } from 'ngx-markdown';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HomeComponent } from './components/Home/home.component';
+import { FormsModule } from '@angular/forms';
+import { SearchUserTableComponent } from './components/search-user-table/search-user-table.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,7 @@ import { HomeComponent } from './components/Home/home.component';
     OverviewComponent,
     RepositoriesComponent,
     HomeComponent,
+    SearchUserTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,9 @@ import { HomeComponent } from './components/Home/home.component';
     MatButtonModule,
     MarkdownModule.forRoot(),
     MatGridListModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

@@ -35,3 +35,39 @@ app-overview {
 .mat-mdc-standard-chip {
   --mdc-chip-label-text-size: 12px;
 }
+
+app-profile {
+  max-width: 28%;
+}
+
+// .sm-profile {
+//   display: none;
+// }
+
+@media (max-width: 1800px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .container {
+    flex-direction: column;
+    gap: 0;
+    margin-top: 20px;
+  }
+
+  .lg-profile {
+    display: none;
+  }
+
+  app-profile {
+    display: contents;
+  }
+}

@@ -76,3 +76,18 @@
   font-size: 20px;
   color: gray;
 }
+
+@media (max-width: 1300px) {
+  .profile-overview {
+    margin-top: 0px;
+  }
+
+  .profile-details {
+    display: flex;
+  }
+
+  .avatar {
+    height: 100px;
+    width: 100px;
+  }
+}

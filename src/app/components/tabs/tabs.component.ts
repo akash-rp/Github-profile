@@ -10,12 +10,22 @@ import { ProfileService } from '../../services/profile-service';
 export class TabsComponent implements OnInit {
   @Input() user!: string;
   profile!: Profile;
+  isLoading: boolean = false;
+  isError: boolean = false;
   constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.profileService.getUserDetails(this.user).subscribe({
       next: (resp) => {
         this.profile = resp;
+      },
+      error: () => {
+        this.isError = true;
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
       },
     });
   }

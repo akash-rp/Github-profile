@@ -1,4 +1,7 @@
+<app-navbar></app-navbar>
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
 <div class="container">
+  <app-profile [profile]="profile" class="sm-profile"></app-profile>
   <mat-tab-group animationDuration="0ms" *ngIf="profile">
     <mat-tab>
       <ng-template mat-tab-label>
@@ -24,9 +27,9 @@
       </div>
     </mat-tab>
   </mat-tab-group>
-  <h2 *ngIf="!profile?.id">User not found. Please check the username.</h2>
+  <h2 *ngIf="isError">User not found. Please check the username.</h2>
 </div>
 
 <ng-template #tabContent>
-  <app-profile [profile]="profile"></app-profile>
+  <app-profile [profile]="profile" class="lg-profile"></app-profile>
 </ng-template>

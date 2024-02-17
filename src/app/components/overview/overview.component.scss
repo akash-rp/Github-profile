@@ -1,0 +1,52 @@
+.markdown-wrapper {
+  padding: 25px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.markdown-wrapper:has(markdown:empty) {
+  display: none;
+}
+
+mat-card {
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
+  width: 100%;
+  margin: 0 10px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  color: gray;
+}
+
+mat-card-content {
+  padding: 0;
+}
+
+mat-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.flex-span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.material-icons-outlined {
+  font-size: 20px;
+  color: gray;
+}
+
+mat-card-title {
+  color: rgb(9, 105, 218);
+  font-size: 14px;
+}
+
+h3 {
+  color: gray;
+  margin: 10px 0px 0px 10px;
+}

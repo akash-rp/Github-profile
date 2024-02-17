@@ -1,1 +1,22 @@
-<h1>Overview</h1>
+<div class="markdown-wrapper">
+  <markdown [src]="markdownSrc"> </markdown>
+</div>
+
+<div>
+  <h3>Popular repositories</h3>
+  <mat-grid-list cols="2" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let repo of repositories">
+      <mat-card>
+        <mat-card-title>{{ repo.name }}</mat-card-title>
+        <mat-card-content>{{ repo.description }}</mat-card-content>
+        <mat-card-footer>
+          <span *ngIf="repo.language">{{ repo.language }}</span>
+          <span class="flex-span" *ngIf="repo.stargazers_count"
+            ><mat-icon fontSet="material-icons-outlined">star_border</mat-icon>
+            {{ repo.stargazers_count }}</span
+          >
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

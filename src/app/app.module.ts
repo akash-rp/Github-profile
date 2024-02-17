@@ -19,6 +19,8 @@ import { RepositoriesComponent } from './components/repositories/repositories.co
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MarkdownModule } from 'ngx-markdown';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { HomeComponent } from './components/Home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { MarkdownModule } from 'ngx-markdown';
     TabsComponent,
     OverviewComponent,
     RepositoriesComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { MarkdownModule } from 'ngx-markdown';
     MatTableModule,
     MatButtonModule,
     MarkdownModule.forRoot(),
+    MatGridListModule,
   ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],

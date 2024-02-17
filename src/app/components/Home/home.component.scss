@@ -1,0 +1,22 @@
+.home {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  height: calc(2em + 20vw);
+  width: calc(2em + 20vw);
+  padding-top: 20px;
+}
+
+h1 {
+  font-size: calc(2em + 3vw);
+  margin-top: 50px;
+}
+
+mat-form-field {
+  margin-top: 20px;
+}

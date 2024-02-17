@@ -1,1 +1,27 @@
-<h1>Welcome to GitHub</h1>
+<div class="home">
+  <img src="/assets/github-mark.svg" alt="GitHub" />
+  <h1>Welcome to GitHub</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Search User / Press Enter</mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="user"
+      (keydown.enter)="searchUser = user"
+    />
+    @if (user) {
+    <button
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="user = searchUser = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    }
+  </mat-form-field>
+  <app-search-user-table
+    [query]="searchUser"
+    *ngIf="searchUser"
+  ></app-search-user-table>
+</div>
